@@ -1,7 +1,9 @@
 {
   "name": "auth-server",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build ./src/index.ts --compile --outfile server",
+    "start" : "./server"
   },
   "dependencies": {
     "@types/pg": "^8.11.11",
