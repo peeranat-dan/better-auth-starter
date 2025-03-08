@@ -1,0 +1,16 @@
+{
+  "name": "auth-server",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "@types/pg": "^8.11.11",
+    "better-auth": "^1.2.3",
+    "hono": "^4.7.4",
+    "pg": "^8.13.3",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
