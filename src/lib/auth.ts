@@ -1,4 +1,5 @@
 import { betterAuth } from "better-auth"
+import { openAPI } from "better-auth/plugins"
 import { Pool } from "pg"
 import { createClient } from "redis"
 
@@ -13,6 +14,9 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  // Add your plugins here
+  plugins: [openAPI()],
+  // DB config
   database: new Pool({
     connectionString: process.env.DATABASE_URL,
   }),

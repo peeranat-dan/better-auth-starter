@@ -9,6 +9,7 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
+// BetterAuth routes, see docs before changing
 app.on(["POST", "GET"], "/api/auth/**", (c) => auth.handler(c.req.raw));
 
 export default app
