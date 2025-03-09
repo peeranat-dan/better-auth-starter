@@ -1,11 +1,9 @@
 import { betterAuth } from "better-auth"
 import { openAPI } from "better-auth/plugins"
 import { Pool } from "pg"
-import { createClient } from "redis"
+import { Redis } from "ioredis"
 
-const redis = createClient({
-  url: process.env.REDIS_URL,
-})
+const redis = new Redis(process.env.REDIS_URL as string)
 
 redis.connect().catch(console.error)
 
@@ -27,9 +25,7 @@ export const auth = betterAuth({
       return value ? JSON.stringify(value) : null
     },
     set: async (key, value, ttl) => {
-      if (ttl) await redis.set(key, value, { EX: ttl })
-      // or for ioredis:
-      // if (ttl) await redis.set(key, value, 'EX', ttl)
+      if (ttl) await redis.set(key, value, "EX", ttl)
       else await redis.set(key, value)
     },
     delete: async (key) => {
