@@ -9,3 +9,6 @@ bun run dev
 ```
 
 open http://localhost:3000
+
+
+Needed env vars: `REDIS_URL`, `DATABASE_URL` and `BETTER_AUTH_SECRET`
