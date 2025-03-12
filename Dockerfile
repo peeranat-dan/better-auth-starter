@@ -21,10 +21,6 @@ WORKDIR /app
 
 # Copy the built application from the builder stage
 COPY --from=builder /app/server ./server
-COPY --from=builder /app/package.json ./
-
-# Make the server executable
-RUN chmod +x ./server
 
 # Command to run the application
 CMD ["./server"]
