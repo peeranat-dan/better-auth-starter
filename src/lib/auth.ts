@@ -1,23 +1,18 @@
 import { betterAuth } from "better-auth";
 import { openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
-import { createClient } from "redis";
+import { Redis } from "ioredis"
 
-// Create Redis client
-const redis = createClient({
-  url: process.env.REDIS_URL,
-}).on("error", (err) => {
-  console.error("Redis connection error:", err)
-}).on("connect", () => {
-  console.log("Redis connected")
-}).on("ready", () => {
-  console.log("Redis ready")
-});
-
-// Connect to Redis
-redis.connect().catch(err => {
-  console.error("Failed to connect to Redis:", err);
-});
+const redis = new Redis(`${process.env.REDIS_URL}?family=0`)
+   .on("error", (err) => {
+     console.error("Redis connection error:", err)
+   })
+   .on("connect", () => {
+     console.log("Redis connected")
+   })
+  .on("ready", () => {
+     console.log("Redis ready")
+   })
 
 // Check better-auth docs for more info https://www.better-auth.com/docs/
 export const auth = betterAuth({
@@ -45,8 +40,11 @@ export const auth = betterAuth({
 			return value ? value : null;
 		},
 		set: async (key, value, ttl) => {
-			if (ttl) await redis.set(key, value, { EX: ttl });
-			else await redis.set(key, value);
+			if (ttl) {
+				await redis.set(key, value, "EX", ttl);
+			} else {
+				await redis.set(key, value);
+			}
 		},
 		delete: async (key) => {
 			await redis.del(key);
