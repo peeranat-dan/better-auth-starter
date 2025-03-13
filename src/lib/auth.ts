@@ -3,6 +3,7 @@ import { openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
 import { createClient } from "redis";
 
+// Create Redis client
 const redis = createClient({
   url: process.env.REDIS_URL,
 }).on("error", (err) => {
@@ -11,6 +12,11 @@ const redis = createClient({
   console.log("Redis connected")
 }).on("ready", () => {
   console.log("Redis ready")
+});
+
+// Connect to Redis
+redis.connect().catch(err => {
+  console.error("Failed to connect to Redis:", err);
 });
 
 // Check better-auth docs for more info https://www.better-auth.com/docs/
