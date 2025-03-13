@@ -16,15 +16,11 @@ RUN bun run build
 
 # Production stage
 FROM oven/bun:1.2.5-slim
-RUN apt-get update && apt-get install -y python3 python3-pip
 
 WORKDIR /app
 
 # Copy the built application from the builder stage
 COPY --from=builder /app/server ./server
-
-# Copy the auth.ts file from src/lib to the final stage
-COPY --from=builder /app/src/lib/auth.ts ./auth.ts
 
 # Command to run the application
 CMD ["./server"]
