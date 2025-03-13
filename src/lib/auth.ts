@@ -1,21 +1,19 @@
 import { betterAuth } from "better-auth";
 import { openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
-import Redis from "ioredis";
+import { Redis } from "ioredis"
 
-// Create Redis client with proper type checking for REDIS_URL
-const redis = new Redis(process.env.REDIS_URL || "");
-
-// Error handler for Redis connection
-redis.on("error", (err) => {
-	console.error("Redis connection error:", err);
-});
-
-// Connection ready handler
-redis.on("ready", () => {
-	console.log("Redis ready");
-});
-
+const redis = new Redis(process.env.REDIS_URL as string)
+   .on("error", (err) => {
+     console.error("Redis connection error:", err)
+   })
+   .on("connect", () => {
+     console.log("Redis connected")
+   })
+  .on("ready", () => {
+     console.log("Redis ready")
+   })
+   
 // Check better-auth docs for more info https://www.better-auth.com/docs/
 export const auth = betterAuth({
 	emailAndPassword: {
