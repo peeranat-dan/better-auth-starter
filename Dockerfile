@@ -20,11 +20,11 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 
 WORKDIR /app
 
-# Copy auth.ts separately for pre-deploy usage
-COPY auth.ts /app/auth.ts
-
 # Copy the built application from the builder stage
 COPY --from=builder /app/server ./server
+
+# Copy the auth.ts file for Better-Auth pre-deploy commands
+COPY --from=builder /app/auth.ts ./auth.ts
 
 # Command to run the application
 CMD ["./server"]
