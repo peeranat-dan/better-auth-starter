@@ -23,8 +23,8 @@ WORKDIR /app
 # Copy the built application from the builder stage
 COPY --from=builder /app/server ./server
 
-# Copy the auth.ts file for Better-Auth pre-deploy commands
-COPY --from=builder /app/auth.ts ./auth.ts
+# Copy the auth.ts file from src/lib to the final stage
+COPY --from=builder /app/src/lib/auth.ts ./auth.ts
 
 # Command to run the application
 CMD ["./server"]
