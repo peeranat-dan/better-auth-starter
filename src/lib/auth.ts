@@ -3,7 +3,7 @@ import { openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
 import { Redis } from "ioredis"
 
-const redis = new Redis(`${process.env.REDIS_URL}?family=0`)
+const redis = new Redis(`${process.env.REDIS_URL}`)
    .on("error", (err) => {
      console.error("Redis connection error:", err)
    })
