@@ -3,7 +3,7 @@ import { openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
 import { Redis } from "ioredis"
 
-const redis = new Redis(process.env.REDIS_URL as string)
+const redis = new Redis(`${process.env.REDIS_URL}?family=0`)
    .on("error", (err) => {
      console.error("Redis connection error:", err)
    })
@@ -13,7 +13,7 @@ const redis = new Redis(process.env.REDIS_URL as string)
   .on("ready", () => {
      console.log("Redis ready")
    })
-   
+
 // Check better-auth docs for more info https://www.better-auth.com/docs/
 export const auth = betterAuth({
 	emailAndPassword: {
