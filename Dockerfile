@@ -19,13 +19,11 @@ FROM oven/bun:1.2.5-slim
 
 WORKDIR /app
 
-# Install Python for pre-deploy commands
-RUN apt-get update && apt-get install -y python3 python3-pip && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 # Copy the built application from the builder stage
 COPY --from=builder /app/server ./server
+
+RUN apt-get update && apt-get install -y python3 python3-pip && \
+    apt-get clean
 
 # Command to run the application
 CMD ["./server"]
