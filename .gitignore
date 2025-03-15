@@ -4,3 +4,4 @@ node_modules/
 .env.*
 better-auth_migrations/*
 server
+.DS_Store
