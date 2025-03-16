@@ -57,3 +57,6 @@ Required environment variables:
   "rememberMe": ""
 }
 ```
+
+## ✨ Soon
+- Admin panel
