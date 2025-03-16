@@ -38,6 +38,20 @@ Required environment variables:
 ### Main Endpoints
 - `GET /health` - Check the health of the server
 - `GET /api/auth/reference` - Scalar docs for all of the OpenAPI endpoints
-- `POST /api/auth/sign-up/email` - Register a new user
-- `POST /api/auth/sign-in/email` - Login a user
 - `GET /api/auth/sign-out` - Logout a user
+- `POST /api/auth/sign-up/email` - Register a new user
+```
+{
+  "name": "name",
+  "email": "email@test.com",
+  "password": "password",
+  "callbackURL": "callbackURL"
+}
+```
+- `POST /api/auth/sign-in/email` - Login a user
+```
+{
+  "name": "name",
+  "password": "password",
+}
+```
