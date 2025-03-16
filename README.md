@@ -42,16 +42,18 @@ Required environment variables:
 - `POST /api/auth/sign-up/email` - Register a new user
 ```
 {
-  "name": "name",
-  "email": "email@test.com",
-  "password": "password",
-  "callbackURL": "callbackURL"
+  "name": "",
+  "email": "",
+  "password": "",
+  "callbackURL": ""
 }
 ```
 - `POST /api/auth/sign-in/email` - Login a user
 ```
 {
-  "name": "name",
-  "password": "password",
+  "email": "",
+  "password": "",
+  "callbackURL": "",
+  "rememberMe": ""
 }
 ```
