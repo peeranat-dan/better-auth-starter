@@ -20,13 +20,13 @@ Required environment variables:
 ## 💡 Considerations
 - 🔄 I strongly encourage **FORKING THIS REPO** and modifying the config to suit your needs, add other providers, email sending, etc.
 - 🗄️ You can use the same DB for your app and this auth server, just be careful with the migrations. This enables you to directly interact with the users and auth tables from your main application.
-- 🔌 You can use the endpoints directly or use better-auth on the client side and [set the base URL in the config file](https://www.better-auth.com/docs/installation#create-client-instance).
+- 🔌 You can use the endpoints directly or use better-auth on the client side and [set the base URL in the config file (highly recommended)](https://www.better-auth.com/docs/installation#create-client-instance).
 - 📚 For complete documentation, visit [Better Auth Docs](https://www.better-auth.com).
 
 ## 🚀 Getting Started
 
 ### Railway Template (recommended)
-*Coming soon*
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/VOQsdL?referralCode=4ArgSI)
 
 ### Self host
 1. Clone or fork this repository
