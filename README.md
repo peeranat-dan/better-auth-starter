@@ -1,29 +1,43 @@
-## Better Auth starter template
+# 🔐 Better Auth Starter Template
 
-#### Considerations
-- I strongly encourage FORKING THIS REPO and modifying the config to you likings, add other providers,
- email sending, etc...
-- You can use the same DB for your app and this auth server, just be careful with the migrations
-- You can use the endpoints or use better-auth on the client side and [set the base url in the config file](https://www.better-auth.com/docs/installation#create-client-instance)
+This template provides a simple, ready-to-use authentication server as a starting point for your app. Build your own reliable auth server while maintaining full ownership of your data without proprietary restrictions.
 
-#### Features
-- email and password login and registration
-- healthcheck endpoint
-- openAPI plugin enabled
-- session storage in redis
+## ✨ Features
+- 📧 Email and password login and registration
+- 🩺 Healthcheck endpoint
+- 📚 OpenAPI plugin enabled
+- 💾 Session storage in Redis
+- ⚡ Built with Hono.js for lightning-fast performance
+- 📦 Compiles to a single Bun binary for easy deployment
 
-To install dependencies:
-```sh
-bun install
-```
+## 🔧 Setup
 
-To run:
-```sh
-bun run dev
-```
+Required environment variables:
+- `REDIS_URL` - Connection string for Redis
+- `DATABASE_URL` - Connection string for your database
+- `BETTER_AUTH_SECRET` - Secret key for encryption and security
 
-open http://localhost:3000
+## 💡 Considerations
+- 🔄 I strongly encourage **FORKING THIS REPO** and modifying the config to suit your needs, add other providers, email sending, etc.
+- 🗄️ You can use the same DB for your app and this auth server, just be careful with the migrations. This enables you to directly interact with the users and auth tables from your main application.
+- 🔌 You can use the endpoints directly or use better-auth on the client side and [set the base URL in the config file](https://www.better-auth.com/docs/installation#create-client-instance).
+- 📚 For complete documentation, visit [Better Auth Docs](https://www.better-auth.com).
 
+## 🚀 Getting Started
 
-Needed env vars: `REDIS_URL`, `DATABASE_URL` and `BETTER_AUTH_SECRET`
-Pre deploy command: `bunx @better-auth/cli generate --y && bunx @better-auth/cli migrate --y`
+### Railway Template (recommended)
+*Coming soon*
+
+### Self host
+1. Clone or fork this repository
+2. Set up the required environment variables
+3. Install the dependencies with `bun install`
+4. Run the server with `bun run dev` (development) or `bun run build` (production)
+5. Connect your application
+
+### Main Endpoints
+- `GET /health` - Check the health of the server
+- `GET /api/auth/reference` - Scalar docs for all of the OpenAPI endpoints
+- `POST /api/auth/sign-up/email` - Register a new user
+- `POST /api/auth/sign-in/email` - Login a user
+- `GET /api/auth/sign-out` - Logout a user
