@@ -28,6 +28,8 @@ Required environment variables:
 ### Railway Template (recommended)
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/VOQsdL?referralCode=4ArgSI)
 
+(If you aren't hosting on Railway or isn't using the Railpack builder you can safely delete the `railpack.json` file)
+
 ### Self host
 1. Clone or fork this repository
 2. Set up the required environment variables
