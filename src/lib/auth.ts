@@ -32,6 +32,10 @@ export const auth = betterAuth({
 			maxAge: 5 * 60,
 		},
 	},
+	rateLimit: {
+        window: 10, // time window in seconds
+        max: 100, // max requests in the window
+    },
 	// Add your plugins here
 	plugins: [openAPI()],
 	// DB config
