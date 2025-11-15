@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { admin, openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
 import { Redis } from "ioredis";
-import { sso } from "@better-auth/sso/*";
+import { sso } from "@better-auth/sso";
 
 const redis = new Redis(`${process.env.REDIS_URL}?family=0`)
   .on("error", (err) => {
