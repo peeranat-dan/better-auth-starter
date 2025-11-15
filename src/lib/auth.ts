@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { admin, openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
 import { Redis } from "ioredis";
+import { sso } from "@better-auth/sso/*";
 
 const redis = new Redis(`${process.env.REDIS_URL}?family=0`)
   .on("error", (err) => {
@@ -37,7 +38,7 @@ export const auth = betterAuth({
     max: 100, // max requests in the window
   },
   // Add your plugins here
-  plugins: [openAPI(), admin()],
+  plugins: [openAPI(), admin(), sso()],
   // DB config
   database: new Pool({
     connectionString: process.env.DATABASE_URL,
